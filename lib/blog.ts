@@ -73,6 +73,7 @@ export async function getArticleBySlug(
       category: data.category,
       content: mdxSource,
       tags: data.tags || [],
+        locale
     };
   } catch (error) {
     console.error("Error fetching article:", error);

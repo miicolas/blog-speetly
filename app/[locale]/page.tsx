@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { getAllArticles } from "@/lib/blog";
+import { getAllArticles, BlogArticle } from "@/lib/blog";
 import { Card } from "@/components/ui/card";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
@@ -58,7 +58,7 @@ export default async function BlogPage({
   return <BlogPageContent articles={articles} />;
 }
 
-function BlogPageContent({ articles }: { articles: any[] }) {
+function BlogPageContent({ articles }: { articles: BlogArticle[] }) {
   const t = useTranslations("blog");
 
   return (
