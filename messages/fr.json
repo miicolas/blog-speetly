@@ -1,0 +1,17 @@
+{
+
+  "header": {
+    "whatsNew": "Qu'y a-t-il de nouveau ?",
+    "blog": "Blog",
+    "signIn": "Connexion",
+    "signUp": "Inscription"
+  },
+  "blog": {
+    "title": "Blog",
+    "publishedBy": "Publié par",
+    "meta": {
+      "title": "Blog Freelance | Conseils & Bonnes Pratiques | Speetly",
+      "description": "Boostez votre carrière de freelance avec des conseils d'experts sur la gestion de projet, la facturation et les relations clients. Restez en avance avec Speetly !"
+    }
+  }
+} 
