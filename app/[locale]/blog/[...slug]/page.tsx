@@ -4,16 +4,17 @@ import { getArticleBySlug, getRelatedArticles } from "@/lib/blog";
 import { Metadata } from "next";
 
 interface BlogPostPageProps {
-    params: {
+    params: Promise<{
         locale: string;
         slug: string[];
-    };
+    }>;
 }
 
 export async function generateMetadata({
     params,
 }: BlogPostPageProps): Promise<Metadata> {
-    const article = await getArticleBySlug(params.slug[0], params.locale);
+    const { locale, slug } = await params;
+    const article = await getArticleBySlug(slug[0], locale);
 
     if (!article) {
         return {};
@@ -39,14 +40,15 @@ export async function generateMetadata({
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-    const article = await getArticleBySlug(params.slug[0], params.locale);
+    const { locale, slug } = await params;
+    const article = await getArticleBySlug(slug[0], locale);
 
     if (!article) {
         notFound();
     }
 
-    const relatedArticles = await getRelatedArticles(params.slug[0], article.tags, params.locale);
-    const url = `${process.env.NEXT_PUBLIC_SITE_URL}/${params.locale}/blog/${params.slug[0]}`;
+    const relatedArticles = await getRelatedArticles(slug[0], article.tags, locale);
+    const url = `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/blog/${slug[0]}`;
 
     return (
         <ArticleLayout
